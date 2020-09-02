@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import theme from "../styles/theme";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,10 +11,23 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="m-12 p-4">
+        <body>
           <Main />
           <NextScript />
         </body>
+        <style jsx global>{`
+          html,
+          body {
+            margin: 0;
+          }
+          html {
+            background-color: ${theme.colors.light};
+          }
+          body {
+            font-family: ${theme.fontFamily.body};
+            font-size: 16px;
+          }
+        `}</style>
       </Html>
     );
   }
