@@ -14,20 +14,7 @@ export default async function getGlobalData() {
         products(first: 100) {
           edges {
             node {
-              id
-              title
-              descriptionHtml
-              handle
-              images(first:1) {
-                edges {
-                  node {
-                    id
-                    transformedSrc(maxWidth: 800)
-                    originalSrc
-                  }
-                }
-              }
-              
+              productType              
             }
           }
         }
@@ -45,13 +32,25 @@ export default async function getGlobalData() {
       }
     }
   }
-} 
+}
     `
   );
 
+  const collections = data.collections.edges;
+
+  // Get types per collection for building shop nav
+  for (let { node } of collections) {
+    const products = node.products.edges;
+    const types = [];
+    for (let { node: product } of products) {
+      types.push(product.productType);
+    }
+    node.types = [...new Set(types)];
+  }
+
   return {
     props: {
-      collections: data?.collections.edges,
+      collections,
       pages: data?.pages.edges,
       shop: data.shop,
     },

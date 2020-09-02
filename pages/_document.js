@@ -23,9 +23,21 @@ class MyDocument extends Document {
           html {
             background-color: ${theme.colors.light};
           }
+          a {
+            color: ${theme.colors.dark};
+            text-decoration: none;
+          }
           body {
             font-family: ${theme.fontFamily.body};
             font-size: 16px;
+          }
+          button {
+            background-color: transparent;
+            border: none;
+          }
+          svg {
+            width: 100%;
+            fill: inherit;
           }
         `}</style>
       </Html>

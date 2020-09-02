@@ -15,7 +15,7 @@ export default function Header({ children }) {
           top: 0;
           left: 0;
           right: 0;
-          border-bottom: solid 1px gray;
+          box-shadow: ${theme.shadows.sm};
         }
       `}</style>
     </header>
